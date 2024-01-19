@@ -420,3 +420,23 @@ plt.legend()
 plt.show()
 
 # %%
+
+
+def delete_all_files():
+    try:
+        # List all files
+        files = client.files.list()
+
+        for file in files.data:
+            # Delete each file
+            client.files.delete(file.id)
+            print(f"Deleted file: {file.id}")
+
+        print("All files deleted.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Call the function to delete all files
+delete_all_files()
+
+# %%
